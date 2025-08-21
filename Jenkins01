@@ -94,10 +94,11 @@ pipeline {
         }
         post {
             always {
-                junit '**/target/*.xml'
+                //junit '**/target/*.xml'
+                mail to: carrieyanzh@gmail.com, subject: 'The Pipeline failed :('
             }
             failure {
-                mail to: team@example.com, subject: 'The Pipeline failed :('
+                mail to: carrieyanzh@gmail.com, subject: 'The Pipeline failed :('
             }
         }
     }
