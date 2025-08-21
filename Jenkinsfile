@@ -29,7 +29,7 @@ pipeline {
                 script {                  
                     echo "Building branch: ${params.BRANCH_TO_BUILD}"
                     echo "Target environment: ${params.ENVIRONMENT}"
-                    
+                     echo "BUILD_USER_ID: ${params.BUILD_USER_ID}"
                     /*
                      * TODO: Add branch validation logic here
                      * FIXME: Handle special characters in branch names
