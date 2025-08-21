@@ -14,6 +14,7 @@ pipeline {
                 script {
                     env.WORKSPACE_DIR = "${env.WORKSPACE}/${env.BUILD_NUMBER}"
                     sh "mkdir -p ${env.WORKSPACE_DIR}"
+                    echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 }
             }
         }
@@ -73,7 +74,8 @@ pipeline {
               }
             }
             steps {
-                sh 'make publish'
+                //sh 'make publish
+                echo "make publish"
             }
         }
     }
