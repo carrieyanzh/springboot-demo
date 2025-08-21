@@ -6,6 +6,8 @@ pipeline {
     }
     environment {
        // SCANNER_HOME=tool 'sonar-scanner'
+		MAVEN_OPTS = '-Xmx1024m -Xms512m'
+        BUILD_USER = "${env.BUILD_USER_ID ?: 'system'}"
     }
 
     stages {
