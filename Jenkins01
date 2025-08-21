@@ -19,7 +19,8 @@ pipeline {
             steps {
                 //wrong sh("curl -u ${EXAMPLE_CREDS_USR}:${EXAMPLE_CREDS_PSW} https://example.com/")
                 //sh('curl -u $EXAMPLE_CREDS_USR:$EXAMPLE_CREDS_PSW     https://example.com/')
-                sh 'curl -u $EXAMPLE_CREDS_USR:$EXAMPLE_CREDS_PSW https://example.com/'
+                //sh 'curl -u $EXAMPLE_CREDS_USR:$EXAMPLE_CREDS_PSW https://example.com/'
+                echo ${EXAMPLE_KEY}    
             }
         }
         stage('Prepare Workspace') {
