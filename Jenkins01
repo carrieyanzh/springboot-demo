@@ -5,10 +5,10 @@ pipeline {
         maven 'Maven3'
     }
     environment { 
-        CC = 'clang'
+       // CC = 'clang'
         //AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
         //AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
-         EXAMPLE_CREDS = credentials('example-credentials-id')         
+        EXAMPLE_CREDS = credentials('example-credentials-id')
     }
     parameters {
         string(name: 'GIT_REPO',   defaultValue: 'https://github.com/carrieyanzh/springboot-demo.git', description: 'Git repository URL')
@@ -18,7 +18,8 @@ pipeline {
         stage('Example') {
             steps {
                 //wrong sh("curl -u ${EXAMPLE_CREDS_USR}:${EXAMPLE_CREDS_PSW} https://example.com/")
-                sh('curl -u $EXAMPLE_CREDS_USR:$EXAMPLE_CREDS_PSW     https://example.com/')
+                //sh('curl -u $EXAMPLE_CREDS_USR:$EXAMPLE_CREDS_PSW     https://example.com/')
+                sh 'curl -u $EXAMPLE_CREDS_USR:$EXAMPLE_CREDS_PSW https://example.com/'
             }
         }
         stage('Prepare Workspace') {
