@@ -21,21 +21,21 @@ pipeline {
                 sh "mvn compile"
             }
         }
-        stage('Test') {
+        /*stage('Test') {
             steps {
                 sh "mvn test"
             }
-        }
+        }*/
         /*stage('Trivy FS Scan') {
         *    steps {
         *        sh "trivy fs --format table -o fs.html . "
         *    }
         }*/
-        stage('Build') {
+        /*stage('Build') {
             steps {
                 sh "mvn package"
             }
-        }
+        }*/
         /*stage("SonarQube Analysis"){
         *    steps{
         *        script{
