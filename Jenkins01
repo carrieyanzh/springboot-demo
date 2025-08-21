@@ -20,7 +20,7 @@ pipeline {
                     dir("${env.WORKSPACE_DIR}") {
                         git branch: "${params.GIT_BRANCH}", url: "${params.GIT_REPO}"
                     }
-                    echo " params git branch ${params.GIT_BRANCH}, url: ${params.GIT_REPO} "
+                    echo " params git branch ${params.GIT_BRANCH}, url: ${params.GIT_REPO} ${env.WORKSPACE}/${env.BUILD_NUMBER} "
                 }
             }
         }
