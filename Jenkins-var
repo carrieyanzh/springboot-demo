@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    
+    parameters {
+        // Method 1: Choose which Jenkinsfile to use
+        choice(
+            name: 'PIPELINE_TYPE',
+            choices: [
+                'development',
+                'staging', 
+                'production',
+                'testing',
+                'custom'
+            ],
+            description: 'Select which pipeline configuration to use'
+        )
+        
+        string(
+            name: 'CUSTOM_JENKINSFILE',
+            defaultValue: 'Jenkinsfile',
+            description: 'Custom Jenkinsfile name (used when "custom" is selected)'
+        )
+        
+        string(
+            name: 'BRANCH_NAME',
+            defaultValue: 'main',
+            description: 'Branch to build'
+        )
+        
+        string(
+            name: 'REPO_URL',
+            defaultValue: 'https://github.com/your-org/your-repo.git',
+            description: 'Repository URL'
+        )
+    }
+}
+    
