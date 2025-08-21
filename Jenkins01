@@ -24,5 +24,16 @@ pipeline {
                 }
             }
         }
+
+        stage('Show Env') {
+            steps {
+                script {
+                    echo "PATH: ${env.PATH}"
+                    echo "BUILD_ID: ${env.BUILD_ID}"
+                    echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
+                    echo "WORKSPACE: ${env.WORKSPACE}"
+                }
+            }
+        }
     }
 }
