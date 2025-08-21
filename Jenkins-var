@@ -50,17 +50,19 @@ pipeline {
             stage('Checkout') {
                 steps {
                     // Use branch or user-specific directory
-                    checkout scm
-                    script {
-                        env.WORKSPACE_DIR = "${env.WORKSPACE}/${env.BUILD_NUMBER}"
-                    }
+                   // checkout scm
+                   // script {
+                   //     env.WORKSPACE_DIR = "${env.WORKSPACE}/${env.BUILD_NUMBER}"
+                   // }
+                    echo "workspace ${env.WORKSPACE}/${env.BUILD_NUMBER}"
                 }
             }
             stage('Build') {
                 steps {
-                    dir("${env.WORKSPACE_DIR}") {
-                        sh 'mvn clean compile'
-                    }
+                   // dir("${env.WORKSPACE_DIR}") {
+                   //     sh 'mvn clean compile'
+                   // }
+                    echo "test"
                 }
             }
     }
