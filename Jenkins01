@@ -35,5 +35,16 @@ pipeline {
                 }
             }
         }
+        stage('Info') {
+            steps {
+                script {
+                    echo "Build Number: ${currentBuild.number}"
+                    echo "Build ID: ${currentBuild.id}"
+                    echo "Display Name: ${currentBuild.displayName}"
+                    echo "Result: ${currentBuild.result}"
+                    currentBuild.description = "This build is for testing dynamic checkout"
+                }
+            }
+        }
     }
 }
