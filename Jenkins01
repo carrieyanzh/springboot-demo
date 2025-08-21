@@ -32,7 +32,6 @@ pipeline {
                 }
             }
         }
-
         stage('Checkout Code') {
             steps {
                 script {                   
@@ -91,16 +90,11 @@ pipeline {
                 //sh 'make publish
                 echo "make publish"
             }
-        }
-        post {
-            always {
-                //junit '**/target/*.xml'
-                mail to: carrieyanzh@gmail.com, subject: 'The Pipeline failed :('
-            }
-            failure {
-                mail to: carrieyanzh@gmail.com, subject: 'The Pipeline failed :('
-            }
+        }        
+    }
+    post {
+        always {
+            mail to: carrieyanzh@gmail.com, subject: 'The Pipeline failed :('
         }
     }
-}
 }
