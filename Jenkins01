@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                sh("curl -u ${EXAMPLE_CREDS_USR}:${EXAMPLE_CREDS_PSW} https://example.com/")
+                //wrong sh("curl -u ${EXAMPLE_CREDS_USR}:${EXAMPLE_CREDS_PSW} https://example.com/")
                 sh('curl -u $EXAMPLE_CREDS_USR:$EXAMPLE_CREDS_PSW     https://example.com/')
             }
         }
