@@ -1,8 +1,8 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'GIT_REPO', defaultValue: 'https://github.com/Fir3eye/springboot-demo.git', description: 'Git repository URL')
-        string(name: 'GIT_BRANCH', defaultValue: 'main', description: 'Branch to build')
+        string(name: 'GIT_REPO',   defaultValue: 'https://github.com/Fir3eye/springboot-demo.git', description: 'Git repository URL')
+        string(name: 'GIT_BRANCH', defaultValue: 'main',                                           description: 'Branch to build')
     }
     stages {
         stage('Prepare Workspace') {
@@ -16,11 +16,11 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                script {
-                    // Checkout dynamically from parameters
+                script {                   
                     dir("${env.WORKSPACE_DIR}") {
                         git branch: "${params.GIT_BRANCH}", url: "${params.GIT_REPO}"
                     }
+                    echo " params git branch ${params.GIT_BRANCH}, url: ${params.GIT_REPO} "
                 }
             }
         }
