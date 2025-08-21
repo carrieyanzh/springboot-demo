@@ -28,7 +28,7 @@ pipeline {
         
         string(
             name: 'REPO_URL',
-            defaultValue: 'https://github.com/your-org/your-repo.git',
+            defaultValue: 'https://github.com/carrieyanzh/springboot-demo.git',
             description: 'Repository URL'
         )
     }
