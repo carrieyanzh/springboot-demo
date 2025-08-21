@@ -38,7 +38,7 @@ pipeline {
             }
         }
 
-		stage('Checkout') {
+		/*stage('Checkout') {
             steps {
                 // Checkout the specified branch from repository
                 checkout([
@@ -46,10 +46,10 @@ pipeline {
                     branches: [[name: "*/${params.BRANCH_TO_BUILD}"]],
                     // Clone with depth 1 for faster checkout (shallow clone)
                     extensions: [[$class: 'CloneOption', depth: 1, shallow: true]],
-                    userRemoteConfigs: [[url: 'https://github.com/your-org/repo.git']]
+                    //userRemoteConfigs: [[url: 'https://github.com/your-org/repo.git']]
                 ])
             }
-        }
+        }*/
 		
         stage('Git Checkout') {
             steps {
