@@ -94,7 +94,8 @@ pipeline {
     }
     post {
         always {
-            mail to: carrieyanzh@gmail.com, subject: 'The Pipeline failed :('
+    //            mail to: carrieyanzh@gmail.com, subject: 'The Pipeline failed :('
+            echo "over"
         }
     }
 }
