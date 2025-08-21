@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'docker1 ' }   
+    agent { label 'docker' }   
     
     parameters {        
         choice(
@@ -16,7 +16,7 @@ pipeline {
         
         string(
             name: 'CUSTOM_JENKINSFILE',
-            defaultValue: 'Jenkinsfile',
+            defaultValue: 'Jenkins-var',
             description: 'Custom Jenkinsfile name (used when "custom" is selected)'
         )
         
