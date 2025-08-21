@@ -4,6 +4,19 @@ pipeline {
         //jdk 'jdk17'
         maven 'Maven3'
     }
+	 parameters {
+        string(
+            name: 'BRANCH_TO_BUILD',
+            defaultValue: 'main',
+            description: 'Enter the branch name to build'  // Parameter description
+        )
+        
+        choice(
+            name: 'ENVIRONMENT',
+            choices: ['dev', 'staging', 'prod'],
+            description: 'Target deployment environment'
+        )
+    }
     environment {
        // SCANNER_HOME=tool 'sonar-scanner'
 		MAVEN_OPTS = '-Xmx1024m -Xms512m'
@@ -11,6 +24,33 @@ pipeline {
     }
 
     stages {
+		stage('Setup') {
+            steps {
+                script {                  
+                    echo "Building branch: ${params.BRANCH_TO_BUILD}"
+                    echo "Target environment: ${params.ENVIRONMENT}"
+                    
+                    /*
+                     * TODO: Add branch validation logic here
+                     * FIXME: Handle special characters in branch names
+                     */
+                }
+            }
+        }
+
+		stage('Checkout') {
+            steps {
+                // Checkout the specified branch from repository
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: "*/${params.BRANCH_TO_BUILD}"]],
+                    // Clone with depth 1 for faster checkout (shallow clone)
+                    extensions: [[$class: 'CloneOption', depth: 1, shallow: true]],
+                    userRemoteConfigs: [[url: 'https://github.com/your-org/repo.git']]
+                ])
+            }
+        }
+		
         stage('Git Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/Fir3eye/springboot-demo.git'
