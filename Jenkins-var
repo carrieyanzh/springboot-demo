@@ -1,8 +1,7 @@
 pipeline {
-    agent { label 'docker && raspberrypi' }   
+    agent { label 'docker ' }   
     
-    parameters {
-        // Method 1: Choose which Jenkinsfile to use
+    parameters {        
         choice(
             name: 'PIPELINE_TYPE',
             choices: [
