@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'GIT_REPO', defaultValue: 'https://github.com/Fir3eye/springboot-demo.git', description: 'Git repository URL')
+        string(name: 'GIT_BRANCH', defaultValue: 'main', description: 'Branch to build')
+    }
+    stages {
+        stage('Prepare Workspace') {
+            steps {
+                script {
+                    env.WORKSPACE_DIR = "${env.WORKSPACE}/${env.BUILD_NUMBER}"
+                    sh "mkdir -p ${env.WORKSPACE_DIR}"
+                }
+            }
+        }
+
+        stage('Checkout Code') {
+            steps {
+                script {
+                    // Checkout dynamically from parameters
+                    dir("${env.WORKSPACE_DIR}") {
+                        git branch: "${params.GIT_BRANCH}", url: "${params.GIT_REPO}"
+                    }
+                }
+            }
+        }
+    }
+}
