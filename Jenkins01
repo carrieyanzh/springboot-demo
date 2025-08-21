@@ -58,7 +58,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'mvn test || true'  // run tests but don't fail the stage
-                junit 'target/surefire-reports/*.xml'  // publish results
+                junit 'target/failsafe-reports/*.xml'
             }
         }
         stage('Package') {
